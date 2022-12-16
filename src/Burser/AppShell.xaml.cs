@@ -1,10 +1,6 @@
-﻿namespace Burser
+namespace Burser;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
-    {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
-    }
+    public AppShell() => InitializeComponent();
 }

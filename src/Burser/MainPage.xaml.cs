@@ -1,24 +1,17 @@
-﻿namespace Burser
+namespace Burser;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private int _count;
+
+    public MainPage() => InitializeComponent();
+
+    private void OnCounterClicked(object sender, EventArgs e)
     {
-        int count = 0;
+        _count++;
 
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        CounterBtn.Text = _count == 1 ? $"Clicked {_count} time" : $"Clicked {_count} times";
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        SemanticScreenReader.Announce(CounterBtn.Text);
     }
 }
