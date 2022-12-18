@@ -1,0 +1,22 @@
+name: Verify formatting on PRs
+on: pull_request
+
+jobs:
+  dotnet-format:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Add dotnet-format problem matcher
+        uses: xt0rted/dotnet-format-problem-matcher@v1
+
+      - name: Restore dotnet tools
+        uses: xt0rted/dotnet-tool-restore@v1
+
+      - name: Run dotnet format
+        uses: eero-dev/dotnet-format@1.0.0
+        with:
+          only-changed-files: true
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          workspace: "src/Burser.sln"
