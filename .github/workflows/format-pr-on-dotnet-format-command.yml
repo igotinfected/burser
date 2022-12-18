@@ -5,7 +5,7 @@ on:
 
 jobs:
   dotnet-format:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     if: ${{ github.event.issue.pull_request }}
     steps:
       - name: Check for command
@@ -37,11 +37,12 @@ jobs:
       - name: Run dotnet format
         if: steps.command.outputs.command-name && steps.command.outputs.command-arguments == 'format'
         id: format
-        uses: jfversluis/dotnet-format@v1.0.9
+        uses: eero-dev/dotnet-format@1.0.0
         with:
           action: "fix"
           only-changed-files: true
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          workspace: "src/Burser.sln"
 
       - name: Commit files
         if: steps.command.outputs.command-name && steps.command.outputs.command-arguments == 'format' && steps.format.outputs.has-changes == 'true'

@@ -3,7 +3,7 @@ on: pull_request
 
 jobs:
   dotnet-format:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -15,7 +15,8 @@ jobs:
         uses: xt0rted/dotnet-tool-restore@v1
 
       - name: Run dotnet format
-        uses: jfversluis/dotnet-format@v1.0.9
+        uses: eero-dev/dotnet-format@1.0.0
         with:
           only-changed-files: true
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          workspace: "src/Burser.sln"
