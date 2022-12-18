@@ -41,6 +41,7 @@ jobs:
         with:
           action: "fix"
           only-changed-files: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit files
         if: steps.command.outputs.command-name && steps.command.outputs.command-arguments == 'format' && steps.format.outputs.has-changes == 'true'
