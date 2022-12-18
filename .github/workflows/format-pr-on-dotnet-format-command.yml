@@ -37,7 +37,7 @@ jobs:
       - name: Run dotnet format
         if: steps.command.outputs.command-name && steps.command.outputs.command-arguments == 'format'
         id: format
-        uses: xt0rted/dotnet-format@v1
+        uses: jfversluis/dotnet-format@v1.0.9
         with:
           action: "fix"
           only-changed-files: true
