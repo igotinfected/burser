@@ -6,6 +6,7 @@ on:
       targtFramework:
         description: 'Framework to build on & test for'
         required: true
+        type: string
 
 jobs:
   build-and-test:
