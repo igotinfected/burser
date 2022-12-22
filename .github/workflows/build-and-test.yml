@@ -1,0 +1,31 @@
+name: Build & test 
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+
+    name: build-and-test-${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: 📦 setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x 
+
+    - name: 📦 restore packages
+      run: dotnet restore
+      
+    - name: 👷 build project
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: ✅ test project
+      run: dotnet test --no-restore --verbosity normal
