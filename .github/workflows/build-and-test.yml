@@ -23,6 +23,9 @@ jobs:
     - name: ⚙️ restore workloads
       run: dotnet workload restore src/Burser.sln
 
+    - name: ⚒️ explicitly install maui workload
+      run: dotnet workload install maui   
+
     - name: 📦 restore packages
       run: dotnet restore src/Burser.sln
       
