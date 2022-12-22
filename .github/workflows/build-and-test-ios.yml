@@ -10,9 +10,6 @@ jobs:
     name: build-and-test-ios
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    
-    - uses: ./.github/workflows/build-and-test.yml
+    uses: ./.github/workflows/build-and-test.yml
       with:
         targetFramework: net7.0-ios
