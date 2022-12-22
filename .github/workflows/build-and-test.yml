@@ -28,10 +28,10 @@ jobs:
       run: dotnet workload install maui   
 
     - name: 📦 restore packages
-      run: dotnet restore src/Burser.sln -p:TargetFramework=${{ inputs.targetFramework }}
+      run: dotnet restore src/Burser/Burser.csproj -p:TargetFramework=${{ inputs.targetFramework }}
       
     - name: 👷 build project
-      run: dotnet build --configuration Release --no-restore src/Burser.csproj -p:TargetFramework=${{ inputs.TargetFramework }}
+      run: dotnet build --configuration Release --no-restore src/Burser/Burser.csproj -p:TargetFramework=${{ inputs.TargetFramework }}
     
     # device unit tests shall be implemented later on
     #- name: ✅ test project
