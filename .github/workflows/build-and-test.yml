@@ -22,10 +22,10 @@ jobs:
         dotnet-version: 7.0.x 
 
     - name: 📦 restore packages
-      run: dotnet restore
+      run: dotnet restore Burser.sln
       
     - name: 👷 build project
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore Burser.sln
     
     - name: ✅ test project
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal Burser.sln
