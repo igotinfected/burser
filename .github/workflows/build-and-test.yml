@@ -20,6 +20,8 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x 
+    - name: ⚙️ restore workloads
+      run: dotnet workload restore src/Burser.sln
 
     - name: 📦 restore packages
       run: dotnet restore src/Burser.sln
