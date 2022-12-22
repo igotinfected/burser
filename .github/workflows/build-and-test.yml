@@ -3,7 +3,7 @@ name: Build & test
 on:
   workflow_call:
     inputs:
-      targtFramework:
+      targetFramework:
         description: 'Framework to build on & test for'
         required: true
         type: string
