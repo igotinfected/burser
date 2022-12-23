@@ -1,0 +1,38 @@
+name: Build & test 
+
+on:
+  workflow_call:
+    inputs:
+      targetFramework:
+        description: 'Framework to build on & test for'
+        required: true
+        type: string
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: windows-latest 
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: 📦 setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x 
+
+    - name: ⚙️ restore workloads
+      run: dotnet workload restore src/Burser/Burser.csproj
+
+    - name: ⚒️ explicitly install maui workload
+      run: dotnet workload install maui   
+
+    - name: 📦 restore packages
+      run: dotnet restore src/Burser/Burser.csproj -p:TargetFramework=${{ inputs.targetFramework }}
+      
+    - name: 👷 build project
+      run: dotnet build --configuration Release --no-restore src/Burser/Burser.csproj -p:TargetFramework=${{ inputs.TargetFramework }}
+    
+    # device unit tests shall be implemented later on
+    #- name: ✅ test project
+    #run: dotnet test --no-restore --verbosity normal src/Burser.sln
