@@ -1,9 +1,11 @@
 name: Build & test iOS 
 
 on:
-  push:
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
+    paths:
+      - 'src/Burser/**'
 
 jobs:
   build_and_test_ios:

@@ -1,12 +1,14 @@
 name: Build & test android
 
 on:
-  push:
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
+    paths:
+      - 'src/Burser/**'
 
 jobs:
   build_and_test_android:
     uses: ./.github/workflows/build-and-test.yml
     with:
-      targetFramework: net7.0-android33.0
+      targetFramework: net7.0-android
