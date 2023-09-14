@@ -22,7 +22,6 @@ public class MainPageTests : BaseTest
         //tap on button (a.k.a. Action)
         App.Tap(_countButton);
 
-
         // check label updated and screenshot(a.k.a. Assert)
         var buttonLabelValue = "Clicked 1 time";
         Assert.DoesNotThrow(() => App.WaitForElement(x => x.Marked(buttonLabelValue)), "Button was not clicked");
